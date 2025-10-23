@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 > A modern **Student Management System** built using **Java Swing**, **MySQL**, and **JasperReports**.  
-> Developed as a final project for the **Object-Oriented Programming (PBO)** course.
+> Developed as a final project for the **Implementation Object-Oriented Programming (IPBO)** course.
 
 ---
 
