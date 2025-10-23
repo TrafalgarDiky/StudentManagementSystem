@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport
+        xmlns="http://jasperreports.sourceforge.net/jasperreports"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                            http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+        name="student_report"
+        pageWidth="595" pageHeight="842"
+        columnWidth="555" leftMargin="20" rightMargin="20"
+        topMargin="20" bottomMargin="20">
+
+    <!-- ====================================================== -->
+    <!-- 1. PARAMETERS -->
+    <!-- ====================================================== -->
+    <parameter name="FROM_NIM" class="java.lang.Integer"/>
+    <parameter name="TO_NIM" class="java.lang.Integer"/>
+
+    <!-- ====================================================== -->
+    <!-- 2. QUERY -->
+    <!-- ====================================================== -->
+    <queryString>
+        <![CDATA[
+            SELECT student_id, name, email, birth_date, major, gender
+            FROM students
+            WHERE student_id BETWEEN $P{FROM_NIM} AND $P{TO_NIM}
+            ORDER BY student_id
+        ]]>
+    </queryString>
+
+    <!-- ====================================================== -->
+    <!-- 3. FIELDS -->
+    <!-- ====================================================== -->
+    <field name="student_id" class="java.lang.Integer"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="email" class="java.lang.String"/>
+    <field name="birth_date" class="java.sql.Date"/>
+    <field name="major" class="java.lang.String"/>
+    <field name="gender" class="java.lang.String"/>
+
+    <!-- ====================================================== -->
+    <!-- 4. TITLE -->
+    <!-- ====================================================== -->
+    <title>
+        <band height="100">
+            <image>
+                <reportElement x="0" y="0" width="60" height="60"/>
+                <imageExpression><![CDATA["src/studentapp/reports/logo4.jpg"]]></imageExpression>
+            </image>
+
+            <staticText>
+                <reportElement x="70" y="10" width="415" height="40"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[LAPORAN DATA MAHASISWA]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="0" y="65" width="555" height="1"/>
+            </line>
+        </band>
+    </title>
+
+    <!-- ====================================================== -->
+    <!-- 5. COLUMN HEADER -->
+    <!-- ====================================================== -->
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement x="0" y="0" width="50" height="20"/>
+                <textElement textAlignment="Center"><font isBold="true"/></textElement>
+                <text><![CDATA[NIM]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="55" y="0" width="115" height="20"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Nama]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="170" y="0" width="150" height="20"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Email]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="330" y="0" width="75" height="20"/>
+                <textElement textAlignment="Center"><font isBold="true"/></textElement>
+                <text><![CDATA[Tgl Lahir]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="410" y="0" width="85" height="20"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Jurusan]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="495" y="0" width="65" height="20"/>
+                <textElement textAlignment="Center"><font isBold="true"/></textElement>
+                <text><![CDATA[Gender]]></text>
+            </staticText>
+
+            <line>
+                <reportElement x="0" y="22" width="555" height="1"/>
+            </line>
+        </band>
+    </columnHeader>
+
+    <!-- ====================================================== -->
+    <!-- 6. DETAIL -->
+    <!-- ====================================================== -->
+    <detail>
+        <band height="18">
+            <textField>
+                <reportElement x="0" y="0" width="50" height="18"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{student_id}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="55" y="0" width="115" height="18"/>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="170" y="0" width="150" height="18"/>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="330" y="0" width="75" height="18"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{birth_date})]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="410" y="0" width="85" height="18"/>
+                <textFieldExpression><![CDATA[$F{major}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="495" y="0" width="65" height="18"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <!-- ====================================================== -->
+    <!-- 7. FOOTER -->
+    <!-- ====================================================== -->
+    <pageFooter>
+        <band height="30">
+            <textField>
+                <reportElement x="450" y="5" width="105" height="20"/>
+                <textElement textAlignment="Right"><font size="9"/></textElement>
+                <textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="5" width="300" height="20"/>
+                <textElement><font size="9" isItalic="true"/></textElement>
+                <text><![CDATA[Generated by Student Management System]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+
+</jasperReport>
