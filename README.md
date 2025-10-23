@@ -199,6 +199,6 @@ Feel free to modify and reuse for educational purposes.
 ---
 
 ## 💬 Contact
-📧 **Email:** firmansyahdiky06@mail.com   
+📧 **Email:** firmansyahdiky06@gmail.com  
 🔗 **GitHub:** [github.com/TrafalgarDiky](https://github.com/dikyfirmansyah)  
 🏫 **Universitas Budi Luhur**, Jakarta – Indonesia
