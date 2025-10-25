@@ -12,7 +12,7 @@ import com.toedter.calendar.JDateChooser;
 import studentapp.util.DatabaseConnector;
 
 /**
- * 🎓 Student Management System
+ * Student Management System
  * Author: Diky Firmansyah
  * Deskripsi:
  * Aplikasi CRUD Mahasiswa dengan fitur:
@@ -44,9 +44,9 @@ public class MainFrame extends JFrame {
         studentDAO = new StudentDAO(); // Inisialisasi koneksi DAO
 
         // Tema warna
-        Color primary = new Color(62, 99, 142);       // biru gelap elegan
+        Color primary = new Color(62, 99, 142);       // biru gelap
         Color accent = new Color(52, 152, 219);      // biru muda untuk tombol
-        Color background = new Color(245, 249, 255); // latar belakang lembut
+        Color background = new Color(245, 249, 255); // latar belakang
 
         // font
         UIManager.put("Label.font", new Font("Segoe UI", Font.PLAIN, 13));
